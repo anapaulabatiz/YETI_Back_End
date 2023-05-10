@@ -11,15 +11,16 @@ public class Producto {
 	private int id;
 	private static int total = 0;
 	
-	public Producto(String nombre, String descripcion, String imagen, String categoria, int precio) {
+	public Producto(String nombre, int precio, String descripcion, String categoria, String imagen) {
 		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.imagen = imagen;
-		this.precio = precio;
-		this.categoria = categoria;
 		total++;
 		id=Producto.total;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.descripcion = descripcion;
+		this.categoria = categoria;
+		this.imagen = imagen;
+		
 	} // constructor 
 	
 	public Producto() {
@@ -77,8 +78,9 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return "Producto [nombre=" + nombre + ", descripcion=" + descripcion + ", imagen=" + imagen + ", categoria="
-				+ categoria + ", precio=" + precio + ", id=" + id + "]";
-	} // toString
+		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", descripcion=" + descripcion
+				+ ", categoria=" + categoria + ", imagen=" + imagen + "]";
+	} //toString
 
+	
 	} // class Producto

@@ -13,14 +13,9 @@ public class ProductoService {
 	@Autowired
 	public ProductoService() {
 		
-		lista.add(new Producto("CUADERNO PROFESIONAL NORMA FERRARI (RAYA, 120 H.)",
-				"Doble espiral reforzado / Pastas semirrígidas","norma2.jpg", "Cuadernos", 219));
-		lista.add(new Producto("Plumas Bic Cristal Intenso Fashion",
-				"Plumas Bic Cristal Intenso Fashion / Punto extra grueso / Tinta colores surtidos",
-				"bic1.jpg", "Plumas", 46));
-		lista.add(new Producto("Plumas Bic Cristal Intenso",
-				" Plumas Bic Cristal Intenso / Punto extra grueso / Tinta negra roja azul / 3 piezas",
-				"bic2.jpg", "Plumas", 27));
+		lista.add(new Producto("Apilable 26 oz", 1300,
+				"Una taza grande para grandes tragos: perfecta para tés, agua fría o batidos XL. Cabe en la mayoría de los portavasos.",
+			    "Termos", "./src/catalogo/Termos/APILABLE26oz.png"));
 		
 	} // constructor
 	
