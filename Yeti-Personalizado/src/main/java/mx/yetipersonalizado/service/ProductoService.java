@@ -31,6 +31,9 @@ public class ProductoService {
 		lista.add(new Producto("Mug 14 oz", 1220, "Una taza versátil que es lo suficientemente grande como para servir como tazón de campamento.",
 				"Termos","/src/catalogo/Termos/MUG 14oz.png"));
 		
+		lista.add(new Producto("Mug 24 oz", 1350, "Una taza para beer gardens, cervezas en casa y bebidas abundantes",
+				"Termos","/src/catalogo/Termos/MUG 24oz.png"));
+		
 		
 	} // constructor
 	
