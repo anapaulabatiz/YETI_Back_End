@@ -3,12 +3,14 @@ package mx.yetipersonalizado.model;
 //POJO: Plain Old Java Object
 
 public class Producto {
-	private String nombre;
-	private String descripcion;
-	private String imagen;
-	private String categoria;
-	private int precio;
 	private int id;
+	private String nombre;
+	private int precio;
+	private String descripcion;
+	private String categoria;
+	private String imagen;
+
+
 	private static int total = 0;
 	
 	public Producto(String nombre, int precio, String descripcion, String categoria, String imagen) {

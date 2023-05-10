@@ -17,6 +17,14 @@ public class ProductoService {
 				"Una taza grande para grandes tragos: perfecta para tés, agua fría o batidos XL. Cabe en la mayoría de los portavasos.",
 			    "Termos", "./src/catalogo/Termos/APILABLE26oz.png"));
 		
+		lista.add(new Producto("Hotshot 12 oz", 1250,
+				"Nuestra botella clásica combinada con la tapa 360º HotShot™, es a prueba de fugas. Lleva tu café mientras viajas. Cabe en la mayoría de los portavasos.",
+			    "Termos", "/src/catalogo/Termos/HOTSHOT 12oz.png"));
+		
+		lista.add(new Producto("Lowball 10 oz", 1030,
+				"Vaso pequeño, apilable, clásico y versátil para tu cóctel en el campamento.",
+			    "Termos", "/src/catalogo/Termos/LOWBALL.png"));
+		
 	} // constructor
 	
 	public ArrayList<Producto> getAllProductos(){
