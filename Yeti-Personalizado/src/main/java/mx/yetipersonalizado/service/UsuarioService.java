@@ -19,7 +19,8 @@ public class UsuarioService {
 		lista.add(new Usuario("Admin", "9999989999", "yetisgneration@gmail.com", "Prueba1."));
 		lista.add(new Usuario("Leslie", "9999989009", "leslie.garciardgz@gmail.com", "Password2."));
 		lista.add(new Usuario("Gabriela Torres", "3344556677", "gabriela@gmail.com", "Password4."));
-
+		lista.add(new Usuario("Ana Gaby", "3333801838", "anarizollacaa@gmail.com", "Password5."));
+		
 	} // constructor
 	
 	public ArrayList<Usuario> getAllUsuarios(){
