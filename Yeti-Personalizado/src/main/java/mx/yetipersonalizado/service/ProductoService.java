@@ -25,6 +25,9 @@ public class ProductoService {
 				"Vaso pequeño, apilable, clásico y versátil para tu cóctel en el campamento.",
 			    "Termos", "/src/catalogo/Termos/LOWBALL.png"));
 		
+		lista.add(new Producto("Mug 10 oz", 1100, "Taza apilable para almacenamiento. Es compacta y aislada, ideal para bebidas calientes.",
+				"Termos","/src/catalogo/Termos/MUG 10oz.png"));
+		
 	} // constructor
 	
 	public ArrayList<Producto> getAllProductos(){

@@ -18,6 +18,7 @@ public class UsuarioService {
 		lista.add(new Usuario("Nicte Cortes", "9999999999", "nictecortes@gmail.com", "Password3"));
 		lista.add(new Usuario("Admin", "9999989999", "yetisgneration@gmail.com", "Prueba1."));
 		lista.add(new Usuario("Leslie", "9999989009", "leslie.garciardgz@gmail.com", "Password2."));
+		lista.add(new Usuario("Gabriela Torres", "3344556677", "gabriela@gmail.com", "Password4."));
 
 	} // constructor
 	
