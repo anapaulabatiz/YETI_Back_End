@@ -13,10 +13,11 @@ public class UsuarioService {
 	@Autowired
 	public UsuarioService() {
 		
-		lista.add(new Usuario("Ana Batiz", "3345937151", "ap.bati@gmail.com", "Password1"));
+		lista.add(new Usuario("Ana Batiz", "3345937151", "ap.batiz@gmail.com", "Password1"));
 		lista.add(new Usuario("Dora Garcia", "333333333", "dorag@gmail.com", "Password2"));
 		lista.add(new Usuario("Nicte Cortes", "9999999999", "nictecortes@gmail.com", "Password3"));
 		lista.add(new Usuario("Admin", "9999989999", "yetisgneration@gmail.com", "Prueba1."));
+		lista.add(new Usuario("Leslie", "9999989009", "leslie.garciardgz@gmail.com", "Password2."));
 
 	} // constructor
 	

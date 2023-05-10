@@ -3,21 +3,21 @@ package mx.yetipersonalizado.model;
 //POJO: Plain Old Java Object
 
 public class Usuario {
+	private int id;
 	private String nombre;
 	private String phone;
 	private String mail;
 	private String password;
-	private int id;
 	private static int total = 0;
 	
 	public Usuario(String nombre, String phone, String mail, String password) {
 		super();
+		id=Usuario.total;
 		this.nombre = nombre;
 		this.phone = phone;
 		this.mail = mail;
 		this.password = password;
 		total++;
-		id=Usuario.total;
 	} // constructor
 	
 	public Usuario() {
@@ -67,8 +67,8 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [nombre=" + nombre + ", phone=" + phone + ", mail=" + mail + ", password=" + password
-				+ ", id=" + id + "]";
-	} // toString
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", phone=" + phone + ", mail=" + mail + ", password="
+				+ password + "]";
+	}// toString
 	
 } // class Usuario
