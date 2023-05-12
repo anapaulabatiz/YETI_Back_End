@@ -1,28 +1,44 @@
 package mx.yetipersonalizado.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 //POJO: Plain Old Java Object
 
+@Entity
+@Table (name = "usuarios")
 public class Usuario {
-	private int id;
+	
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (unique=true, nullable=false)
+	private Long id;
+	
+	
 	private String nombre;
 	private String phone;
-	private String mail;
-	private String password;
-	private static int total = 0;
 	
-	public Usuario(String nombre, String phone, String mail, String password) {
-		super();
-		id=Usuario.total;
+	@Column (unique=true, nullable=false)
+	private String mail;
+	
+	private String password;
+	
+	public Usuario(Long id, String nombre, String phone, String mail, String password) {
+		
+		this.id=id;
 		this.nombre = nombre;
 		this.phone = phone;
 		this.mail = mail;
 		this.password = password;
-		total++;
+		
 	} // constructor
 	
 	public Usuario() {
-		total++;
-		id=Usuario.total;
+		
 	} // default constructor
 
 	public String getNombre() {
@@ -57,11 +73,11 @@ public class Usuario {
 		this.password = password;
 	} // setPassword
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	} // getId
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	} // setId
 
