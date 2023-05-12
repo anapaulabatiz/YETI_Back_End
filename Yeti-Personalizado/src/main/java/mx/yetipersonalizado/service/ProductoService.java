@@ -1,82 +1,56 @@
 package mx.yetipersonalizado.service;
 
-import java.util.ArrayList;
+import java.util.List;
 import mx.yetipersonalizado.model.Producto;
+import mx.yetipersonalizado.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class ProductoService {
+	private final ProductoRepository productoRepository;
 	
-	private final ArrayList<Producto> lista = new ArrayList<>();
 	@Autowired
-	public ProductoService() {
-		
-		lista.add(new Producto("Apilable 26 oz", 1300,
-				"Una taza grande para grandes tragos: perfecta para tés, agua fría o batidos XL. Cabe en la mayoría de los portavasos.",
-			    "Termos", "./src/catalogo/Termos/APILABLE26oz.png"));
-		
-		lista.add(new Producto("Hotshot 12 oz", 1250,
-				"Nuestra botella clásica combinada con la tapa 360º HotShot™, es a prueba de fugas. Lleva tu café mientras viajas. Cabe en la mayoría de los portavasos.",
-			    "Termos", "/src/catalogo/Termos/HOTSHOT 12oz.png"));
-		
-		lista.add(new Producto("Lowball 10 oz", 1030,
-				"Vaso pequeño, apilable, clásico y versátil para tu cóctel en el campamento.",
-			    "Termos", "/src/catalogo/Termos/LOWBALL.png"));
-		
-		lista.add(new Producto("Mug 10 oz", 1100, "Taza apilable para almacenamiento. Es compacta y aislada, ideal para bebidas calientes.",
-				"Termos","/src/catalogo/Termos/MUG 10oz.png"));
-		
-		lista.add(new Producto("Mug 14 oz", 1220, "Una taza versátil que es lo suficientemente grande como para servir como tazón de campamento.",
-				"Termos","/src/catalogo/Termos/MUG 14oz.png"));
-		
+	public ProductoService(ProductoRepository productoRepository) {
+		this.productoRepository= productoRepository;
 		
 	} // constructor
 	
-	public ArrayList<Producto> getAllProductos(){
-		return lista;
+	public List<Producto> getAllProductos(){
+		return productoRepository.findAll();
 	} // getAllProductos
 
 	public Producto getProducto(Integer id) {
-		Producto tmpProd = null;
-		for (Producto producto : lista) {
-			if (producto.getId()==id) {
-				tmpProd = producto;
-			}//if
-		} // forEach
-		return tmpProd;
+		return productoRepository.findById(id).orElseThrow(
+				()-> new IllegalArgumentException("El producto con id "+ id + " no existe"));
 	} // getProducto
 
 	public Producto deleteProducto(Integer id) {
 		Producto tmpProd = null;
-		for (Producto producto : lista) {
-			if (producto.getId()==id) {
-				tmpProd = lista.remove(lista.indexOf(producto));
-				break;
-			}//if
-		} // forEach
+		if (productoRepository.existsById(id)) {
+			tmpProd=productoRepository.findById(id).get();
+			productoRepository.deleteById(id);
+		}//if 
 		return tmpProd;
 	} // deleteProducto
 
 	public Producto addProducto(Producto producto) {
-		lista.add(producto);
-		return producto;
+		return productoRepository.save(producto);
 	} // addProducto
 
-	public Producto updateProducto(Integer id, String nombre, String descripcion, String imagen, String categoria, Integer precio) {
+	public Producto updateProducto(Integer id, String nombre, String descripcion, String imagen, Integer categoria, Integer precio) {
 		Producto tmpProd = null;
-		for (Producto producto : lista) {
-			if (producto.getId()==id) {
-				if (nombre!=null) producto.setNombre(nombre);
-				if (descripcion!=null) producto.setDescripcion(descripcion);
-				if (imagen!=null) producto.setImagen(imagen);
-				if (categoria!=null) producto.setCategoria(categoria);
-				if (precio!=null) producto.setPrecio(precio.intValue());
-				tmpProd = producto;
-				break;
-			}//if
-		} // forEach
+		if (productoRepository.existsById(id)) {
+			tmpProd= productoRepository.findById(id).get();
+			if (nombre!=null)tmpProd.setNombre(nombre);
+			if (descripcion !=null)tmpProd.setDescripcion(descripcion);
+			if (imagen !=null)tmpProd.setImagen(imagen);
+			if (categoria !=null)tmpProd.setCategoria(categoria);
+			if (precio !=null)tmpProd.setPrecio(precio.intValue());
+			productoRepository.save(tmpProd);
+		}else {
+			System.out.println("Update - El producto con id " + id + " no existe");
+		}// else
 		return tmpProd;
 	} //updateProducto
 	

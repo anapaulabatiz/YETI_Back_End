@@ -1,22 +1,34 @@
 package mx.yetipersonalizado.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 //POJO: Plain Old Java Object
 
+@Entity
+@Table (name="productos")
 public class Producto {
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name="idproductos", unique= true, nullable=false)
 	private int id;
+	@Column (nullable=false)
 	private String nombre;
+	@Column (nullable=false)
 	private int precio;
+	@Column (nullable=false)
 	private String descripcion;
-	private String categoria;
+	@Column (name= "idcategoria", nullable=false)
+	private int categoria;
+	@Column (nullable=false)
 	private String imagen;
-
-
-	private static int total = 0;
 	
-	public Producto(String nombre, int precio, String descripcion, String categoria, String imagen) {
+	public Producto(String nombre, int precio, String descripcion, int categoria, String imagen) {
 		super();
-		total++;
-		id=Producto.total;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.descripcion = descripcion;
@@ -26,8 +38,6 @@ public class Producto {
 	} // constructor 
 	
 	public Producto() {
-		total++;
-		id=Producto.total;
 	} // default constructor
 
 	public String getNombre() {
@@ -54,11 +64,11 @@ public class Producto {
 		this.imagen = imagen;
 	} // setImagen
 	
-	public String getCategoria() {
+	public int getCategoria() {
 		return categoria;
 	} // getCategoria
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(int categoria) {
 		this.categoria = categoria;
 	} // setCategoria
 
