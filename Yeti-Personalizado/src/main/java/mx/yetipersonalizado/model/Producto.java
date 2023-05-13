@@ -24,7 +24,7 @@ public class Producto {
 	private String descripcion;
 	@Column (name= "idcategoria", nullable=false)
 	private int categoria;
-	@Column (nullable=false)
+	@Column 
 	private String imagen;
 	
 	public Producto(String nombre, int precio, String descripcion, int categoria, String imagen) {
