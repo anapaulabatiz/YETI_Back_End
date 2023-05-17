@@ -9,5 +9,5 @@ import mx.yetipersonalizado.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository <Usuario, Long>{
-	Optional <Usuario> findByMail (String email);
+	Optional <Usuario> findByMail (String mail);
 }
