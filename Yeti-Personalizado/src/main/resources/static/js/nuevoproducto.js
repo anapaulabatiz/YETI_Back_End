@@ -137,14 +137,14 @@ btnSend.addEventListener("click", function (event) {
   // JSON
   if (isValid) {
  //   datos = JSON.parse(localStorage.getItem("datos"));
-    let elemento = `{
-                "nombre": "${nameTxt.value}",
-                "precio": ${precio.value},            
-                "descripcion": "${descripcion.value}",
-                "categoria": "${categoria.value}",
-                "imagen": "${inputFile.value}"
-    }`;
-    
+    let elemento = {
+                "nombre": nameTxt.value,
+                "descripcion": descripcion.value,
+                "precio": precio.value,            
+                "categoria": categoria.value,
+                "imagen": inputFile.value
+    };
+    console.log(elemento);
    fetch('/producto/', {
    method: 'POST', 
    headers: {
@@ -154,6 +154,7 @@ btnSend.addEventListener("click", function (event) {
    })
    .then(response => response.json())
    .then(elemento => {
+	   
    console.log('Success:', elemento);
    })
    .catch((error) => {

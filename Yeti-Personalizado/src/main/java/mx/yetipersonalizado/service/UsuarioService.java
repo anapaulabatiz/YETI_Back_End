@@ -52,7 +52,10 @@ public class UsuarioService {
 		if(usuarioRepository.findByMail(usuario.getMail()).isEmpty()) {       
 			usuario.setPassword(passwordEncoder.encode(usuario.getPassword())); 
 			tmp = usuarioRepository.save(usuario);
-		}
+		}else {
+			System.out.println("Ya existe un usuario con el correo [" 
+		+ usuario.getMail() + "]");
+		}//if
 		return tmp;
 	} // addUsuario
 
