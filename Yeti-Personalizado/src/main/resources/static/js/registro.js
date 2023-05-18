@@ -80,16 +80,6 @@ function validPswdRepeat() {
     }
 }
 
-function validRepeatMail(){
-    usuarioObjeto = JSON.parse(localStorage.getItem("usuario"));
- 
-     for (let i = 0; i < usuarioObjeto.length; i++) {
-        if (usuarioObjeto[i].mail == mail.value.toLowerCase()) {
-            return true;
-         } 
-    }
-}
-
 // BUTTON WITH ADD EVENT LISTENER
 
 btnSend.addEventListener("click", function (event) {
@@ -126,16 +116,7 @@ btnSend.addEventListener("click", function (event) {
         alertVal.style.display = "block";
         isValid = false;
     } else {
-
-        if (validRepeatMail()) {
-            mail.style.border = "solid thin red";
-            alertMsg = "Esta dirección de correo ya está registrada.";
-            alertVal.style.display = "block";
-            isValid = false;
-        } else {
-            mail.style.border = "solid thin blue";
-        }
-
+		mail.style.border = "solid thin blue";
     }
 
     if (!validPswd()) {
@@ -155,30 +136,33 @@ btnSend.addEventListener("click", function (event) {
         pswdRepeat.style.border = "solid thin blue";
     }
 
-
-
-    // if (validRepeatMail()) {
-    //     mail.style.border = "solid thin red";
-    //     alertMsg = "Esta dirección de correo ya está registrada.";
-    //     alertVal.style.display = "block";
-    //     isValid = false;
-    // } else {
-    //     mail.style.border = "solid thin blue";
-    // }
-
     // IF IS VALID = TRUE, SEND EMAIL WITH API "EMAILJS"
     
     if (isValid) {
         //JSON
-        let usuario = `{
-            "nombre": "${nameTxt.value}",
-            "phone": ${phone.value},
-            "mail": "${mail.value.toLowerCase()}",
-            "pswd": "${pswd.value}"
-        }`;
-
-        usuarioObjeto.push(JSON.parse(usuario));  
-        localStorage.setItem("usuario",JSON.stringify(usuarioObjeto));
+        let usuario = {
+            "nombre": nameTxt.value,
+            "phone": phone.value,
+            "mail": mail.value.toLowerCase(),
+            "password": pswd.value
+        };
+        
+            
+	   fetch('/usuario/', {
+	   method: 'POST', 
+	   headers: {
+	     'Content-Type': 'application/json',
+	   },
+	   body: JSON.stringify(usuario),
+	   })
+	   .then(response => response.json())
+	   .then(usuario => {
+		   
+	   console.log('Success:', usuario);
+	   })
+	   .catch((error) => {
+	   console.error('Error:', error);
+	   });
         
         nameTxt.value = "";
         phone.value = "";

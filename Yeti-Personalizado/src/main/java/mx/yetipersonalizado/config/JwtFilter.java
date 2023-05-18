@@ -22,7 +22,7 @@ public class JwtFilter extends GenericFilterBean {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		String authHeader =  httpServletRequest.getHeader("Authorization");
+		String authHeader =  httpServletRequest.getHeader("authorization");
 		if (  (("POST".equals(httpServletRequest.getMethod())) && (! httpServletRequest.getRequestURI().contains("/usuario/"))) ||
 				( ("GET".equals(httpServletRequest.getMethod())) && 
 						(! httpServletRequest.getRequestURI().contains("/producto/"))) ||
@@ -32,7 +32,7 @@ public class JwtFilter extends GenericFilterBean {
 				if  ( authHeader ==null || !authHeader.startsWith("Bearer: ") ) {
 					throw new ServletException("1. Invalid Token");
 				}// if authHedaer
-				String token = authHeader.substring(6);
+				String token = authHeader.substring(7);
 				try {
 				Claims claims = Jwts.parser().setSigningKey(secret)
 						.parseClaimsJws(token).getBody();

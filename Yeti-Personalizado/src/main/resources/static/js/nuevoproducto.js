@@ -144,7 +144,7 @@ btnSend.addEventListener("click", function (event) {
                 "categoria": categoria.value,
                 "imagen": inputFile.value
     };
-    console.log(elemento);
+    
    fetch('/producto/', {
    method: 'POST', 
    headers: {

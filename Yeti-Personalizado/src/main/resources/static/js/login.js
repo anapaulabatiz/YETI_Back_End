@@ -10,7 +10,6 @@ let togglePassword = document.getElementById("togglePassword");
 let idTimeout;
 let isValid = true;
 let usuario = [];
-let alertMsg = "";
 
 // TOGGLE PASSWORD 
 
@@ -26,6 +25,7 @@ btnLogIn.addEventListener("click", function (event) {
     event.preventDefault();
     alertVal.style.display = "none";
     alertValText.innerHTML = "";
+    let alertMsg = "";
     isValid = true;
     clearTimeout(idTimeout);
     
@@ -33,6 +33,8 @@ btnLogIn.addEventListener("click", function (event) {
                 "mail": mail.value,
                 "password": pswd.value
     };
+    
+    
 
     fetch('/login/', {
     method: 'POST', // or 'PUT'
@@ -44,8 +46,14 @@ btnLogIn.addEventListener("click", function (event) {
  .then(response => response.json())
  .then(data => {
    console.log('Success:', data);
-   console.log(usuario);
-   sessionStorage.setItem("usuarioLogin",JSON.stringify(usuario));
+   let usuarioLogged = {
+                "mail": mail.value,
+                "token": data
+    };
+    data = JSON.stringify(data);
+    console.log(data);
+    if (data.match(/^{"accessToken"/)){
+   sessionStorage.setItem("usuarioLogin",JSON.stringify(usuarioLogged));
    Swal.fire({
             position: 'center',
             icon: 'success',
@@ -60,16 +68,26 @@ btnLogIn.addEventListener("click", function (event) {
         idTimeout = setTimeout(function () {
             window.location.href = "./index.html";
             
-        }, 1000);
+        }, 1000);}
+        else {
+			mail.style.border = "solid thin red";
+   			pswd.style.border = "solid thin red";
+   			alertMsg = "Usuario o contraseña incorrectos."
+   			alertVal.style.display = "block";
+   			alertValText.insertAdjacentHTML("beforeend", alertMsg);
+		}
  })
+ 
  .catch((error) => {
-   mail.style.border = "solid thin red";
-   pswd.style.border = "solid thin red";
-   alertVal.style.display = "block";
+	mail.style.border = "solid thin red";
+   	pswd.style.border = "solid thin red";
+   	alertVal.style.display = "block";
+   	alertMsg += "Usuario o contraseña incorrectos."
+   console.log(error);
   });
-
-    alertValText.insertAdjacentHTML("beforeend", alertMsg);
-
+	
+    
+	
 });
 
 
