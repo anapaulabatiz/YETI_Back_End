@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import mx.yetipersonalizado.service.UsuarioService;
 
 @RestController
 @RequestMapping(path = "/login/")
+//@CrossOrigin(origins="http://127.0.0.1:5501")
 public class LoginController {
 	private final UsuarioService usuarioService;
 	

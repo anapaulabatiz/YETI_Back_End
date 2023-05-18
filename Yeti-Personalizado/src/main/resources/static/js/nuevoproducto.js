@@ -136,19 +136,31 @@ btnSend.addEventListener("click", function (event) {
 
   // JSON
   if (isValid) {
-    datos = JSON.parse(localStorage.getItem("datos"));
-    id = (datos[datos.length-1].id);
-    id++;
+ //   datos = JSON.parse(localStorage.getItem("datos"));
     let elemento = `{
-                "id": ${id},
-                "title": "${nameTxt.value}",
-                "price": ${precio.value},
-                "category": "${categoria.value}",
-                "description": "${descripcion.value}",
-                "image": "${inputFile.value}"
+                "nombre": "${nameTxt.value}",
+                "precio": ${precio.value},            
+                "descripcion": "${descripcion.value}",
+                "categoria": "${categoria.value}",
+                "imagen": "${inputFile.value}"
     }`;
+    
+   fetch('/producto/', {
+   method: 'POST', 
+   headers: {
+     'Content-Type': 'application/json',
+   },
+   body: JSON.stringify(elemento),
+   })
+   .then(response => response.json())
+   .then(elemento => {
+   console.log('Success:', elemento);
+   })
+   .catch((error) => {
+   console.error('Error:', error);
+   });
 
-    datos.push(JSON.parse(elemento));
+//    datos.push(JSON.parse(elemento));
 
     nameTxt.value = "";
     precio.value = "";
@@ -164,7 +176,7 @@ btnSend.addEventListener("click", function (event) {
       showConfirmButton: false,
       timer: 2500
     })
-    localStorage.setItem("datos", JSON.stringify(datos));
+//    localStorage.setItem("datos", JSON.stringify(datos));
   }
 
   // SET TIME OUT

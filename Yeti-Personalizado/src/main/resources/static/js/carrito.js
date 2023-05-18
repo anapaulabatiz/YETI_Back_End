@@ -23,10 +23,10 @@ function mostrarProducto(productosCarrito) {
     for (let i = 0; i < totalProductos; i++) {
         let card = `
             <div name="cardProductName" class="cardProduct">
-                <img src="${productosCarrito[i].image}" class="card-img-top imgCarrito" alt="...">
+                <img src="${productosCarrito[i].imagen}" class="card-img-top imgCarrito" alt="...">
                 <div class="cardParts">
                     <h4 class="card-title"><strong>MODELO:</strong></h4>
-                    <h5 class="card-title txt">${productosCarrito[i].title}</h5>
+                    <h5 class="card-title txt">${productosCarrito[i].nombre}</h5>
                 </div>
                 <div class="cardParts">
                     <h4 class="card-title"><strong>CANTIDAD:</strong></h4>
@@ -43,7 +43,7 @@ function mostrarProducto(productosCarrito) {
                 </div>
                 <div class="cardParts">
                     <h4 class="card-title"><strong>PRECIO UNITARIO:</strong></h4>
-                    <h5 class="card-title txt"><strong> $ ${productosCarrito[i].price} MXN </strong></h5>
+                    <h5 class="card-title txt"><strong> $ ${productosCarrito[i].precio} MXN </strong></h5>
                 </div>
                 <button class="btn btnBorrarProducto" onclick="borrarProducto(${i})">Borrar</button>        
                 </div>
@@ -55,7 +55,7 @@ function mostrarProducto(productosCarrito) {
 function calcularTotal() {
     total = 0;
     for (let i = 0; i < productosCarrito.length; i++) {
-        total += parseInt(btncantidad[i].value) * productosCarrito[i].price;
+        total += parseInt(btncantidad[i].value) * productosCarrito[i].precio;
     }
     totaltxt.textContent = "Total: $ " + total;
 }

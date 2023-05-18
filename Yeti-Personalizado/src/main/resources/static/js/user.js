@@ -4,7 +4,7 @@ let user = document.getElementById("user");
 if ((sessionStorage.getItem("usuarioLogin") != null)||(sessionStorage.getItem("usuarioLogin") != "NoLogin")) {
     let usuario = JSON.parse(sessionStorage.getItem("usuarioLogin"));
 
-    user.insertAdjacentHTML("beforeend", `${usuario.nombre}`);
+    user.insertAdjacentHTML("beforeend", `${usuario.mail}`);
 }
 
 btnLogOut.addEventListener("click", function (event) {

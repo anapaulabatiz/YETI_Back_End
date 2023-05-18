@@ -1,5 +1,5 @@
 let producto = JSON.parse(localStorage.getItem("datos"));
-let filtro = "Tazones";
+let filtro = 4;
 let catalogo = document.getElementById("main");
 let btnAgregar = document.getElementById("btnAgregar");
 let productosCarrito = [];
@@ -26,7 +26,7 @@ else {
 
 producto = JSON.parse(localStorage.getItem("datos"));
 let productosFiltrado = [];
-productosFiltrado = producto.filter((producto) => producto.category == filtro);
+productosFiltrado = producto.filter((producto) => producto.categoria == filtro);
 
 mostrarProducto(productosFiltrado);
 
@@ -65,10 +65,10 @@ function mostrarProducto(datos) {
 
     let card = `
             <div class="card cardProduct" style="width: 18rem;">
-                <img src="${datos[i].image}" class="card-img-top" alt="...">
+                <img src="${datos[i].imagen}" class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">${datos[i].title}</h5>
-                <p class="card-text descriptionCard">${datos[i].description.slice(0, 60
+                <h5 class="card-title">${datos[i].nombre}</h5>
+                <p class="card-text descriptionCard">${datos[i].descripcion.slice(0, 60
     )}...</p>
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal_${datos[i].id}">Más info </button>
                 </div>
@@ -78,13 +78,13 @@ function mostrarProducto(datos) {
                  <div class="modal-dialog">
                  <div class="modal-content">
                  <div class="modal-header">
-                 <h1 class="modal-title fs-5" id="exampleModalLabel">${datos[i].title}</h1>
+                 <h1 class="modal-title fs-5" id="exampleModalLabel">${datos[i].nombre}</h1>
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                  </div>
-                 <center><img src="${datos[i].image}" class="card-img-top" alt="..." style="width: 15rem"></center>
+                 <center><img src="${datos[i].imagen}" class="card-img-top" alt="..." style="width: 15rem"></center>
                  <div class="modal-body">
-                 ${datos[i].description}
-                 <p class="text-end"><strong> $ ${datos[i].price} MXN </strong></p>
+                 ${datos[i].descripcion}
+                 <p class="text-end"><strong> $ ${datos[i].precio} MXN </strong></p>
                   </div>
                   <div class="modal-footer">
                   <button type="button" class="btn" data-bs-dismiss="modal" name="btnAdd">Añadir a carrito</button>
