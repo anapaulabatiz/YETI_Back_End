@@ -17,7 +17,7 @@ if (sessionStorage.getItem("usuarioLogin") == "NoLogin") {
 }
 else {
   let usuario = JSON.parse(sessionStorage.getItem("usuarioLogin"));
-  if (usuario.nombre != "Admin")
+  if (usuario.mail != "yetisgeneration@gmail.com")
   {
     btnAgregar.style.display = "none";
   }
