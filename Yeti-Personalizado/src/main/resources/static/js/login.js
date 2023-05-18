@@ -51,7 +51,6 @@ btnLogIn.addEventListener("click", function (event) {
                 "token": data
     };
     data = JSON.stringify(data);
-    console.log(data);
     if (data.match(/^{"accessToken"/)){
    sessionStorage.setItem("usuarioLogin",JSON.stringify(usuarioLogged));
    Swal.fire({
