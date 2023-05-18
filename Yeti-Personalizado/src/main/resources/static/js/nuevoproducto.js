@@ -136,7 +136,8 @@ btnSend.addEventListener("click", function (event) {
 
   // JSON
   if (isValid) {
- //   datos = JSON.parse(localStorage.getItem("datos"));
+	let usuarioLogin;
+	usuarioLogin = JSON.parse(sessionStorage.getItem("usuarioLogin"));
     let elemento = {
                 "nombre": nameTxt.value,
                 "descripcion": descripcion.value,
@@ -145,10 +146,16 @@ btnSend.addEventListener("click", function (event) {
                 "imagen": inputFile.value
     };
     
+    console.log(usuarioLogin.token);
+    let token = JSON.stringify(usuarioLogin.token);
+    token = token.slice(16,-2);
+    console.log(token);
+    
    fetch('/producto/', {
    method: 'POST', 
    headers: {
      'Content-Type': 'application/json',
+     'Authorization':`Bearer: ${token}`
    },
    body: JSON.stringify(elemento),
    })
